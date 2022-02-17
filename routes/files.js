@@ -24,6 +24,12 @@ router.post("/", (req, res) => {
     
     upload(req, res, async (err) => {
 
+      console.log('req.file :>> ', req.file);
+
+        if (!req.file) {
+          return res.status(500).send({ error: "No file added" })
+        }
+
         if (err) {
             return res.status(500).send({ error: err.message })
         }
